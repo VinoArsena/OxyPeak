@@ -7,7 +7,7 @@ struct InputView: View {
         Text("Input VO₂ Max")
             .font(.largeTitle.bold())
         
-        Text("Check minimum VO₂ Max \n to safely summit")
+        Text("Choose preferred method")
             .font(.callout)
             .multilineTextAlignment(.center)
         
