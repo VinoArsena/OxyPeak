@@ -1,4 +1,5 @@
 import Foundation
+import SwiftUI
 
 struct Mountain {
     let id: UUID
@@ -23,5 +24,24 @@ struct Mountain {
         self.estimation = estimation
         self.overview = overview
         self.vo2max = vo2max
+    }
+}
+
+enum gradeColor {
+    case grade1, grade2, grade3, grade4, grade5
+    
+    var themeColor: Color {
+        switch self {
+        case .grade1:
+            return .brown
+        case .grade2:
+            return .green
+        case .grade3:
+            return .blue
+        case .grade4:
+            return .purple
+        case .grade5:
+            return .red
+        }
     }
 }
