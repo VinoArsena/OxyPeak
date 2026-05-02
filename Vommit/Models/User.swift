@@ -13,7 +13,7 @@ struct User {
     var weight: Double
     var vo2Max: Double
     
-    init(id: UUID, name: String, dob: Date, gender: Gender, height: Double, weight: Double, vo2Max: Double) {
+    init(id: UUID = UUID(), name: String, dob: Date, gender: Gender, height: Double, weight: Double, vo2Max: Double) {
         self.id = id
         self.name = name
         self.dob = dob

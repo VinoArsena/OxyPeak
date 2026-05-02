@@ -30,4 +30,6 @@ struct LandingView: View {
 
 #Preview {
     LandingView()
+        .preferredColorScheme(.dark)
+        .background(Color("Background").ignoresSafeArea())
 }

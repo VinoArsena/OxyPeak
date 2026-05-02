@@ -10,10 +10,14 @@ struct InputView: View {
             .font(.callout)
             .multilineTextAlignment(.center)
         
+        Spacer()
+        
     }
 
 }
 
 #Preview {
     InputView()
+        .preferredColorScheme(.dark)
+        .background(Color("Background").ignoresSafeArea())
 }
