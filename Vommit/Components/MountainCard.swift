@@ -72,14 +72,14 @@ struct MountainCard: View {
     MountainCard(mountain: Mountain(
         name: "Rinjani",
         imageUrl: "https://d18sx48tl6nre5.cloudfront.net/webp_xl_9a4e03f5b7b3ff53050a863be365b8ff.webp",
-        grade: 3,
+        grade: 4,
         duration: 10,
         elevation: 3726,
         distance: 35,
         estimation: 3..<4,
         overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         vo2max: 15
-    ), gradeColor: .grade3
+    ), gradeColor: .grade4
     )
     .preferredColorScheme(.dark)
     .background(Color("Background").ignoresSafeArea())
