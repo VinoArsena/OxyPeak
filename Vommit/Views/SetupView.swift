@@ -1,5 +1,4 @@
 import SwiftUI
-import SwiftData
 
 struct InputView: View {
 
@@ -10,9 +9,6 @@ struct InputView: View {
         Text("Choose preferred method")
             .font(.callout)
             .multilineTextAlignment(.center)
-        
-        
-        
         
     }
 
