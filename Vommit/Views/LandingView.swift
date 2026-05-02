@@ -20,7 +20,7 @@ struct LandingView: View {
                     .padding(.top, 80)
                 
                 Spacer()
-                    .frame(height: 12) // Reduced gap to subtitle (previously 30)
+                    .frame(height: 12) 
 
                 // Subtitle "Check Minimum VO2)
                 Text("Check minimum **VO\u{2082} Max**\nto safely **summit**")
@@ -29,7 +29,7 @@ struct LandingView: View {
                     .multilineTextAlignment(.center)
                     .lineSpacing(4)
 
-                Spacer() // Main spacer fills empty middle for mountains
+                Spacer()
 
                 // Action Section
                 Button(action: {
