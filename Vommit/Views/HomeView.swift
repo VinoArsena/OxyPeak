@@ -1,28 +1,57 @@
 import SwiftUI
 
 struct HomeView: View {
-//    let mountains: [Mountain] = Mountain.sampleData
+    //    let mountains: [Mountain] = Mountain.sampleData
     
     var body: some View {
         
-        ZStack {
-            VStack {
-                Text("Choose Mountain")
-                    .font(.title.bold())
-                
-                ScrollView {
+        TabView {
+            ZStack {
+                VStack {
+                    
+                    Text("Choose Mountain")
+                        .font(.title.bold())
+                    
+                    ScrollView {
+                        
+                    }
+                    
+                    Spacer()
                     
                 }
+                .padding(24)
                 
-                Spacer()
+                
+                .tabItem {
+                    Label("Profile", systemImage: "person")
+                }
             }
-            .padding(24)
+            .preferredColorScheme(.dark)
+            .background(Color("Background"))
+            .tabItem {
+                Label("Home", systemImage: "house.fill")
+            }
+            
+            ProfileView(
+                user: User(
+                    name: "Joanne Doe",
+                    dob: Date(),
+                    gender: .others,
+                    height: 170,
+                    weight: 60,
+                    vo2Max: 30
+                ))
+            .tabItem {
+                Label("Profile", systemImage: "person")
+            }
         }
-        .preferredColorScheme(.dark)
-        .background(Color("Background"))
+        
+        
         
     }
+    
 }
+
 
 #Preview {
     HomeView()

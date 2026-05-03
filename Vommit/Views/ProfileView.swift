@@ -30,8 +30,9 @@ struct ProfileView: View {
                 .cornerRadius(26)
                 
                 List(items, id: \.self) { item in
-                           Text(item) // This is your row
-                       }
+                    Text(item) // Row
+                }
+                
                 
                 Spacer()
             }

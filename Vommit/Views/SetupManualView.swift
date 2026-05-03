@@ -6,11 +6,16 @@ struct SetupManualView: View {
         
         ZStack {
             VStack {
-                Text("Input Info Manually")
+                Text("Setup Profile")
                     .font(.title.bold())
+                
+                Text("Tell us about yourself")
+                
+                
                 
                 Spacer()
             }
+            .frame(maxWidth: .infinity)
             .padding(24)
         }
         .preferredColorScheme(.dark)

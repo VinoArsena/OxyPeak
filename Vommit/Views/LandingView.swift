@@ -30,6 +30,7 @@ struct LandingView: View {
                     .font(.caption.italic())
             }
             .padding(24)
+            .frame(maxWidth: .infinity)
         }
         .preferredColorScheme(.dark)
         .background(Color("Background"))

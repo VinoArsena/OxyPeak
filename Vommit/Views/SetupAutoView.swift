@@ -10,7 +10,15 @@ struct SetupAutoView: View {
                     .font(.title.bold())
                 
                 Spacer()
+                
+                Image(systemName: "applewatch")
+                    .font(.largeTitle)
+                    .background(Color("CardBackground"))
+                    .cornerRadius(26)
+                
+                Spacer()
             }
+            .frame(maxWidth: .infinity)
             .padding(24)
         }
         .preferredColorScheme(.dark)

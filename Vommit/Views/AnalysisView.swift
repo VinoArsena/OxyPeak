@@ -63,7 +63,7 @@ struct AnalysisView: View {
                     Image(systemName: "house.fill")
                         .font(.largeTitle)
                     
-                    VStack(spacing: 8) {
+                    VStack(alignment: .leading, spacing: 8) {
                         Text("The Science Behind")
                             .font(.headline)
                         
@@ -75,6 +75,13 @@ struct AnalysisView: View {
                 .padding(16)
                 .background(Color("CardBackground"))
                 .cornerRadius(26)
+                
+                Button {
+                    
+                } label: {
+                    Text("Next")
+                }
+                .buttonStyle(.glass)
                 
                 Spacer()
             }
