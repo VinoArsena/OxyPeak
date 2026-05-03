@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ProfileView: View {
     let user: User
-    let items = ["Apple", "Banana", "Cherry"]
+    let items = ["Age", "Gender", "Height", "Weight", "VO2 Max"]
     
     var body: some View {
         
