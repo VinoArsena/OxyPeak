@@ -5,19 +5,18 @@ struct TerrainCard: View {
     
     var body: some View {
         AsyncImage(url: URL(string: terrain.image))
-            .frame(width: 150, height: 150)
-            .cornerRadius(16)
-            .shadow(radius: 4)
+            .frame(width: 80, height: 80)
+            .cornerRadius(6)
         
         Text(terrain.name)
-            .font(.system(size: 20))
-            .padding(.top, 12)
+            .font(.system(size: 11))
+            .padding(.top, 4)
     }
 }
 
 #Preview {
     TerrainCard(terrain: Terrain(
         name: "Rocky Ascent",
-        image: "https://dummyimage.com/150"
+        image: "https://dummyimage.com/80"
     ))
 }
