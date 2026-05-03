@@ -1,7 +1,7 @@
 import Foundation
 
 enum Gender {
-    case male, female, others
+    case male, female, others, notset
 }
 
 struct User {

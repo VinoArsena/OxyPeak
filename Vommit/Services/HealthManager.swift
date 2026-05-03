@@ -47,10 +47,20 @@ class HealthManager {
         let type = HKQuantityType.quantityType(forIdentifier: .vo2Max)!
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
-        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, _ in
-            guard let sample = results?.first as? HKQuantitySample else { return }
+        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, error in
+            
+            if let error = error {
+                print("[HealthManager] VO2Max query error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let sample = results?.first as? HKQuantitySample else {
+                print("[HealthManager] VO2Max sync: No data found in Health app.")
+                return
+            }
+            
             DispatchQueue.main.async {
-                self.vo2Max = sample.quantity.doubleValue(for: HKUnit.gramUnit(with: .milli))
+                self.vo2Max = sample.quantity.doubleValue(for: HKUnit.mlPerKgMin())
             }
         }
         healthStore.execute(query)
@@ -60,8 +70,18 @@ class HealthManager {
         let type = HKQuantityType.quantityType(forIdentifier: .bodyMass)!
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
-        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, _ in
-            guard let sample = results?.first as? HKQuantitySample else { return }
+        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, error in
+            
+            if let error = error {
+                print("[HealthManager] Weight query error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let sample = results?.first as? HKQuantitySample else {
+                print("[HealthManager] Weight sync: No data found in Health app.")
+                return
+            }
+            
             DispatchQueue.main.async {
                 self.weight = sample.quantity.doubleValue(for: .gramUnit(with: .kilo))
             }
@@ -73,10 +93,20 @@ class HealthManager {
         let type = HKQuantityType.quantityType(forIdentifier: .height)!
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
-        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, _ in
-            guard let sample = results?.first as? HKQuantitySample else { return }
+        let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, error in
+            
+            if let error = error {
+                print("[HealthManager] Height query error: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let sample = results?.first as? HKQuantitySample else {
+                print("[HealthManager] Height sync: No data found in Health app.")
+                return
+            }
+            
             DispatchQueue.main.async {
-                self.height = sample.quantity.doubleValue(for: .gramUnit(with: .kilo))
+                self.height = sample.quantity.doubleValue(for: .meter())
             }
         }
         healthStore.execute(query)
@@ -84,10 +114,15 @@ class HealthManager {
     
     private func fetchDOB() {
         do {
-            let dob = try healthStore.dateOfBirthComponents()
+            let dobComponents = try healthStore.dateOfBirthComponents()
+            
+            guard let dob = dobComponents.date else {
+                print("[HealthManager] DOB Error: Date components exist but could not be converted to Date.")
+                return
+            }
             
             DispatchQueue.main.async {
-                self.dob = dob.date ?? Date()
+                self.dob = dob
             }
         } catch {
             print("[HealthManager] error: Failed fetching DOB")
@@ -96,10 +131,22 @@ class HealthManager {
     
     private func fetchGender() {
         do {
-            let gender = try healthStore.biologicalSex()
+            let biologicalSexObject = try healthStore.biologicalSex()
+            let sex = biologicalSexObject.biologicalSex
             
             DispatchQueue.main.async {
-                self.gender = gender.description
+                switch sex {
+                case .female:
+                    self.gender = "female"
+                case .male:
+                    self.gender = "male"
+                case .other:
+                    self.gender = "others"
+                case .notSet:
+                    self.gender = "notset"
+                @unknown default:
+                    self.gender = "others"
+                }
             }
         } catch {
             print("[HealthManager] error: Failed fetching gender")
