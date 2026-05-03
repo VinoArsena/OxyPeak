@@ -3,11 +3,17 @@ import SwiftUI
 struct TrainingView: View {
     
     var body: some View {
+        
         NavigationStack {
-            VStack {
-                // content here
-                
+            ZStack {
+                VStack {
+                    // content here
+                    
+                }
             }
+            .preferredColorScheme(.dark)
+            .background(Color("Background"))
+            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -32,11 +38,11 @@ struct TrainingView: View {
                 }
             }
         }
+        
     }
 }
 
 #Preview {
     TrainingView()
-        .preferredColorScheme(.dark)
-        .background(Color("Background").ignoresSafeArea())
+        
 }

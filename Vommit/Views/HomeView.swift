@@ -4,24 +4,27 @@ struct HomeView: View {
 //    let mountains: [Mountain] = Mountain.sampleData
     
     var body: some View {
-        Text("Choose Mountain")
-            .font(.largeTitle.bold())
-            .multilineTextAlignment(.center)
         
-        
-        ScrollView {
-            
+        ZStack {
+            VStack {
+                Text("Choose Mountain")
+                    .font(.title.bold())
+                
+                ScrollView {
+                    
+                }
+                
+                Spacer()
+            }
+            .padding(24)
         }
-        
-        
-        
+        .preferredColorScheme(.dark)
+        .background(Color("Background"))
         
     }
 }
 
 #Preview {
     HomeView()
-        .preferredColorScheme(.dark)
-        .background(Color("Background").ignoresSafeArea())
 }
 

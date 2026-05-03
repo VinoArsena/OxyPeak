@@ -3,13 +3,23 @@ import SwiftUI
 struct SetupAutoView: View {
     
     var body: some View {
-        Text("Text")
+        
+        ZStack {
+            VStack {
+                Text("Sync Automatically")
+                    .font(.title.bold())
+                
+                Spacer()
+            }
+            .padding(24)
+        }
+        .preferredColorScheme(.dark)
+        .background(Color("Background"))
+        
     }
 }
 
 #Preview {
     SetupAutoView()
-        .preferredColorScheme(.dark)
-        .background(Color("Background").ignoresSafeArea())
 }
 

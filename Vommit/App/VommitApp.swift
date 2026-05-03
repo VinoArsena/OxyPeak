@@ -8,7 +8,7 @@ struct VommitApp: App {
         WindowGroup {
             LandingView()
                 .preferredColorScheme(.dark)
-                .background(Color("Background").ignoresSafeArea())
+                .background(Color("Background")).ignoresSafeArea()
         }
     }
 }

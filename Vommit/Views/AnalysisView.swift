@@ -3,12 +3,23 @@ import SwiftUI
 struct AnalysisView: View {
     
     var body: some View {
-        Text("Text")
+        
+        ZStack {
+            VStack {
+                Text("Analysis")
+                    .font(.title.bold())
+                
+                Spacer()
+            }
+            .padding(24)
+        }
+        .preferredColorScheme(.dark)
+        .background(Color("Background"))
+        
     }
 }
 
+
 #Preview {
     AnalysisView()
-        .preferredColorScheme(.dark)
-        .background(Color("Background").ignoresSafeArea())
 }

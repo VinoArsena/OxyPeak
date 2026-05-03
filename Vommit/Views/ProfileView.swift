@@ -5,35 +5,40 @@ struct ProfileView: View {
     let items = ["Apple", "Banana", "Cherry"]
     
     var body: some View {
-        VStack {
-            Text("Profile")
-                .font(.largeTitle.bold())
-            
-            HStack (spacing: 16){
-                Image(systemName: "person.circle.fill")
-                    .font(.largeTitle)
+        
+        ZStack {
+            VStack {
+                Text("Profile")
+                    .font(.largeTitle.bold())
                 
-                VStack {
-                    Text("\(user.name)")
-                        .font(.headline)
-                    Text("Placeholder")
-                        .font(.body)
+                HStack (spacing: 16){
+                    Image(systemName: "person.circle.fill")
+                        .font(.largeTitle)
+                    
+                    VStack {
+                        Text("\(user.name)")
+                            .font(.headline)
+                        Text("Placeholder")
+                            .font(.body)
+                    }
+                    
+                    Spacer()
                 }
+                .frame(maxWidth: .infinity)
+                .padding(16)
+                .background(.cardBackground)
+                .cornerRadius(26)
+                
+                List(items, id: \.self) { item in
+                           Text(item) // This is your row
+                       }
                 
                 Spacer()
             }
-            .frame(maxWidth: .infinity)
-            .padding(16)
-            .background(.cardBackground)
-            .cornerRadius(26)
-            
-            List(items, id: \.self) { item in
-                       Text(item) // This is your row
-                   }
-            
-            Spacer()
+            .padding(24)
         }
-        .padding(.horizontal, 24)
+        .preferredColorScheme(.dark)
+        .background(Color("Background"))
         
     }
 }
@@ -47,7 +52,5 @@ struct ProfileView: View {
         weight: 60,
         vo2Max: 30
     ))
-        .preferredColorScheme(.dark)
-        .background(Color("Background").ignoresSafeArea())
 }
 

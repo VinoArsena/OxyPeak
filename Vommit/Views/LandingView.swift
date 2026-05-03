@@ -1,35 +1,42 @@
 import SwiftUI
 
 struct LandingView: View {
-
+    
     var body: some View {
-        Image(systemName: "mountain.2")
-            .font(.largeTitle)
-            .padding()
-
-        Text("VOMMIT")
-            .bold()
-            .font(.largeTitle)
-            .padding()
         
-        Text("Check minum **VO\u{2082}Max** \nto safely summit")
-            .multilineTextAlignment(.center)
-            .padding()
+        ZStack {
+            VStack {
+                Image(systemName: "mountain.2")
+                    .font(.largeTitle)
+                    .padding(24)
+                
+                Text("VOMMIT")
+                    .font(.largeTitle.bold())
+                
+                Spacer()
+                
+                Text("Check minimum **VO₂ Max** \nto safely summit")
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+                
+                Text("Tap here to start")
+                
+                Spacer()
+                
+                Text("Based on research from\nAmerican College of Sports Medicine")
+                    .multilineTextAlignment(.center)
+                    .fontWeight(.thin)
+                    .font(.caption.italic())
+            }
+            .padding(24)
+        }
+        .preferredColorScheme(.dark)
+        .background(Color("Background"))
         
-        
-        Text("Tap here to start")
-        
-        Text("Based on research from\nAmerican College of Sports Medicine")
-            .multilineTextAlignment(.center)
-            .fontWeight(.thin)
-            .italic()
-            .font(.caption)
-            .padding()
     }
 }
 
 #Preview {
     LandingView()
-        .preferredColorScheme(.dark)
-        .background(Color("Background").ignoresSafeArea())
 }
