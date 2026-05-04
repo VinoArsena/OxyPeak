@@ -17,9 +17,51 @@ struct TrainingView: View {
     ]
     
     var body: some View {
-        NavigationStack {
+    NavigationStack {
             ZStack {
-                VStack {
+                VStack (alignment: .leading) {
+                    VStack (spacing: 16) {
+                            Text("Your VO₂ Max")
+                                .font(.title3.bold())
+                            Text("20.8")
+                                .font(.title3.bold())
+                            Text("ml/kg/min")
+                        }
+                    .frame(maxWidth: .infinity)
+                    .padding(16)
+                    .background(Color("CardBackground"))
+                    .cornerRadius(26)
+                    .padding(16)
+                    
+                    HStack(alignment: .center, spacing: 16) {
+                        ZStack {
+                            Image(systemName: "figure")
+                                .font(.system(size: 34))
+                                .frame(width: 40, height: 41)
+                                .foregroundColor(.white)
+                        }
+                        .padding(.top, 4)
+                    
+                        VStack(alignment: .leading, spacing: 6) {
+                            Text("What to do ?")
+                                .font(.headline)
+                                .fontWeight(.bold)
+                            Text("Improve VO₂ Max by doing regular exercise to increase endurance.")
+                                .font(.subheadline)
+                                .foregroundColor(Color.white.opacity(0.7))
+                                .lineSpacing(4)
+                        }
+                    }
+                    .padding(.vertical, 24)
+                    .padding(.horizontal, 20)
+                    .background(Color("CardBackground"))
+                    .cornerRadius(26)
+                    
+                    Text("Recommended Exercise")
+                        .font(.system(size: 20, weight: .semibold))
+                    
+                    
+                
                     // content here
                     ForEach(exercises, id: \.title) { exercise in ExerciseCard(
                         icon: exercise.icon,
