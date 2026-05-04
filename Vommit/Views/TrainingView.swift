@@ -1,19 +1,34 @@
 import SwiftUI
 
 struct TrainingView: View {
+    let exercises: [ExerciseCard] = [
+        ExerciseCard(
+            icon: "figure.walk",
+            title: "Running",
+            description: "Interval or long run indoor or outdoor."),
+        ExerciseCard(
+            icon: "figure.step.training",
+            title: "Step Up",
+            description: "Stepping up and down a ledge or stair repeatedly."),
+        ExerciseCard(
+            icon: "figure.indoor.soccer",
+            title: "Any Sports",
+            description: "Any sports required intense effort and high heart rate.")
+    ]
     
     var body: some View {
-        
         NavigationStack {
             ZStack {
                 VStack {
                     // content here
-                    
+                    ForEach(exercises, id: \.title) { exercise in ExerciseCard(
+                        icon: exercise.icon,
+                        title: exercise.title,
+                        description: exercise.description)
+                    }
                 }
+                .padding(.vertical)
             }
-            .preferredColorScheme(.dark)
-            .background(Color("Background"))
-            
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
                     Button(action: {
@@ -25,7 +40,7 @@ struct TrainingView: View {
                             .clipShape(Circle())
                     }
                 }
-
+                
                 ToolbarItem(placement: .principal) {
                     VStack {
                         Text("Training Plan")
@@ -38,11 +53,14 @@ struct TrainingView: View {
                 }
             }
         }
-        
+        .preferredColorScheme(.dark)
+        .background(Color("Background"))
     }
+    
 }
+
 
 #Preview {
     TrainingView()
-        
+    
 }
