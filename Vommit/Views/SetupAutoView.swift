@@ -6,7 +6,7 @@ struct SetupAutoView: View {
         
         ZStack {
             VStack {
-                Text("Sync Automatically")
+                Text("Sync from Apple Watch")
                     .font(.title.bold())
                 
                 Spacer()
@@ -17,6 +17,15 @@ struct SetupAutoView: View {
                     .cornerRadius(26)
                 
                 Spacer()
+                
+                Text("Automatically sync your VO₂ max data from apple watch")
+                   
+                
+                Spacer()
+                
+//                Cara cari font gimana sih ?? Dan juga mau kasih kotak border gitu di tulisannya.
+//                Vicz,
+                
             }
             .frame(maxWidth: .infinity)
             .padding(24)

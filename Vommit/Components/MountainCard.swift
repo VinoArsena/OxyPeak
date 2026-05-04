@@ -21,6 +21,7 @@ struct MountainCard: View {
                     Spacer()
                     Label {
                         Text("Grade \(mountain.grade)")
+                            .foregroundStyle(.secondary)
                     } icon: {
                         Image(systemName: "circle.dashed")
                             .imageScale(.small)
@@ -61,8 +62,8 @@ struct MountainCard: View {
             .padding(16)
         }
         .background(Color("CardBackground"))
-        .cornerRadius(26)
         .preferredColorScheme(.dark)
+        .cornerRadius(26)
         
     }
 }
@@ -77,6 +78,6 @@ struct MountainCard: View {
         distance: 35,
         estimation: 3..<4,
         overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        vo2max: 15,
+        vo2max: 15
     ))
 }
