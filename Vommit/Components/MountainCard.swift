@@ -2,7 +2,6 @@ import SwiftUI
 
 struct MountainCard: View {
     let mountain: Mountain
-    let gradeColor: gradeColor
     
     func formatNumber(_ number: Double) -> String {
         return number.formatted(.number.precision(.fractionLength(0...2)))
@@ -27,7 +26,7 @@ struct MountainCard: View {
                         Image(systemName: "circle.dashed")
                             .imageScale(.small)
                             .bold()
-                            .foregroundStyle(.orange)
+                            .foregroundStyle(mountain.themeColor)
                     }
                 }
                 
@@ -63,6 +62,7 @@ struct MountainCard: View {
             .padding(16)
         }
         .background(Color("CardBackground"))
+        .preferredColorScheme(.dark)
         .cornerRadius(26)
         
     }
@@ -79,8 +79,5 @@ struct MountainCard: View {
         estimation: 3..<4,
         overview: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         vo2max: 15
-    ), gradeColor: .grade4
-    )
-    .preferredColorScheme(.dark)
-    .background(Color("Background").ignoresSafeArea())
+    ))
 }
