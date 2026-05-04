@@ -9,7 +9,7 @@ struct HomeView: View {
             ZStack {
                 VStack {
                     
-                    Text("Choose Mountain")
+                    Text("Pick Mountain")
                         .font(.title.bold())
                     
                     ScrollView {
