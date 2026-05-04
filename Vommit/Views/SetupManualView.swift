@@ -24,7 +24,6 @@ struct SetupManualView: View {
                 }
                 .padding(.top, 20)
                 
-                ScrollView {
                     VStack(spacing: 20) {
                         
                         InputRow(label: "Name") {
@@ -57,7 +56,6 @@ struct SetupManualView: View {
                             TextField("30 ml/kg/min", text: $vo2Max)
                         }
                     }
-                }
                 
                 Button("Continue") { /* Action here */ }
                     .font(.headline)
