@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct InputView: View {
+struct SetupView: View {
 
     var body: some View {
         
@@ -61,5 +61,5 @@ struct InputView: View {
 }
 
 #Preview {
-    InputView()
+    SetupView()
 }

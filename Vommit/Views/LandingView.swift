@@ -33,7 +33,7 @@ struct LandingView: View {
 
                 // Action Section
                 Button(action: {
-                    // Action Untuk Get Started
+                    
                 }) {
                     Text("Get Started")
                         .font(.system(size: 20, weight: .bold))
