@@ -17,16 +17,20 @@ struct TrainingView: View {
     ]
     
     var body: some View {
-    NavigationStack {
+        NavigationStack {
             ZStack {
-                VStack (alignment: .leading) {
+                ScrollView {
+                    Text("Training")
+                        .font(.title)
+                        .multilineTextAlignment(.center)
+                    
                     VStack (spacing: 16) {
-                            Text("Your VO₂ Max")
-                                .font(.title3.bold())
-                            Text("20.8")
-                                .font(.title3.bold())
-                            Text("ml/kg/min")
-                        }
+                        Text("Your VO₂ Max")
+                            .font(.title3.bold())
+                        Text("20.8")
+                            .font(.title3.bold())
+                        Text("ml/kg/min")
+                    }
                     .frame(maxWidth: .infinity)
                     .padding(16)
                     .background(Color("CardBackground"))
@@ -41,7 +45,7 @@ struct TrainingView: View {
                                 .foregroundColor(.white)
                         }
                         .padding(.top, 4)
-                    
+                        
                         VStack(alignment: .leading, spacing: 6) {
                             Text("What to do ?")
                                 .font(.headline)
@@ -60,46 +64,61 @@ struct TrainingView: View {
                     Text("Recommended Exercise")
                         .font(.system(size: 20, weight: .semibold))
                     
-                    
-                
                     // content here
                     ForEach(exercises, id: \.title) { exercise in ExerciseCard(
                         icon: exercise.icon,
                         title: exercise.title,
                         description: exercise.description)
                     }
+                    
+                    Button(action: {
+                    }) {
+                        Text("Find Another Mountain")
+                            .font(.title3.bold())
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding(16)
+                            .background(Color.blue)
+                            .cornerRadius(30)
+                    }
                 }
                 .padding(.vertical)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button(action: {
-                        
-                    }) {
-                        Image(systemName: "chevron.left")
-                            .font(.system(size: 16, weight: .bold))
-                            .frame(width: 36, height: 36)
-                            .clipShape(Circle())
-                    }
+            .preferredColorScheme(.dark)
+            .background(Color("Background"))
+        }
+        .navigationBarHidden(true)
+        
+        .toolbar{
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    
+                }) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 16, weight: .bold))
+                        .frame(width: 36, height: 36)
+                        .clipShape(Circle())
                 }
-                
-                ToolbarItem(placement: .principal) {
-                    VStack {
-                        Text("Training Plan")
-                            .font(.title2.bold())
-                            .foregroundColor(.white)
-                        Text("Based on your VO₂ Max")
-                            .font(.caption)
-                            .foregroundColor(.secondary)
-                    }
+            }
+            
+            ToolbarItem(placement: .principal) {
+                VStack {
+                    Text("Training Plan")
+                        .font(.title2.bold())
+                        .foregroundColor(.white)
+                    Text("Based on your VO₂ Max")
+                        .font(.caption)
+                        .foregroundColor(.secondary)
                 }
             }
         }
-        .preferredColorScheme(.dark)
-        .background(Color("Background"))
     }
-    
 }
+    
+            
+       
+    
+    
 
 
 #Preview {
