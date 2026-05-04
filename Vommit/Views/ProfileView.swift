@@ -3,6 +3,8 @@ import SwiftUI
 struct ProfileView: View {
     let user: User
     let items = ["Age", "Gender", "Height", "Weight", "VO2 Max"]
+    //    let update = ["Age", "Gender", "Height", "Weight", "VO2 Max"]
+    
     
     var body: some View {
         
@@ -15,10 +17,10 @@ struct ProfileView: View {
                     Image(systemName: "person.circle.fill")
                         .font(.largeTitle)
                     
-                    VStack {
+                    VStack(alignment: .leading) {
                         Text("\(user.name)")
                             .font(.headline)
-                        Text("Placeholder")
+                        Text("Outdoor Enthusiast")
                             .font(.body)
                     }
                     
@@ -34,8 +36,23 @@ struct ProfileView: View {
                 }
                 
                 
+                VStack (alignment: .leading){
+                    Text("Update VO₂ Max ")
+                        .font(Font.body.bold())
+                    Text("Last update: May 1, 2026")
+                    Text("Update")
+                        .padding(16)
+                        .frame(maxWidth: .infinity)
+                        .background(Color("CardBackground")) // Pakai warna card kamu
+                        .cornerRadius(26)
+                        
+                    
+                }
+                
+                
                 Spacer()
             }
+            
             .padding(24)
         }
         .preferredColorScheme(.dark)
