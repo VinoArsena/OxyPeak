@@ -32,10 +32,10 @@ struct LandingView: View {
 
                     Spacer()
 
-                    // Action Section
+                    // Button Get Started
                     NavigationLink(destination: SetupView()) {
                         Text("Get Started")
-                            .font(.system(size: 20, weight: .bold))
+                            .font(.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
                             .padding(.vertical, 16)
@@ -45,7 +45,7 @@ struct LandingView: View {
                     .padding(.horizontal, 40)
                     .padding(.bottom, 16)
 
-                    // Footer (Button Get Started)
+                    // Footer
                     Text("Based on research from\nAmerican College of Sports Medicine")
                         .multilineTextAlignment(.center)
                         .font(.system(size: 12, weight: .light))
