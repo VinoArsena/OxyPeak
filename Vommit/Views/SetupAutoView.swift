@@ -5,6 +5,8 @@ struct SetupAutoView: View {
     @State private var navigate = false
     @State private var showNext = false
     
+    @Binding var user: User?
+    
     var body: some View {
         
         ZStack {
@@ -51,7 +53,7 @@ struct SetupAutoView: View {
                     }
                 }
                 .navigationDestination(isPresented: $navigate) {
-                    SetupManualView(name: "", selectedGender: healthManager.gender, birthday: healthManager.dob, height: healthManager.height, weight: healthManager.weight, vo2Max: healthManager.vo2Max)
+                    SetupManualView(name: "", selectedGender: Gender(from: healthManager.gender), birthday: healthManager.dob, height: healthManager.height, weight: healthManager.weight, vo2Max: healthManager.vo2Max, user: $user)
                 }
                 
                 if(healthManager.isAuthorized) {
@@ -61,7 +63,7 @@ struct SetupAutoView: View {
                         Text("Next")
                     }
                     .navigationDestination(isPresented: $showNext) {
-                        SetupManualView(name: "", selectedGender: healthManager.gender, birthday: healthManager.dob, height: healthManager.height, weight: healthManager.weight, vo2Max: healthManager.vo2Max)
+                        SetupManualView(name: "", selectedGender: Gender(from: healthManager.gender), birthday: healthManager.dob, height: healthManager.height, weight: healthManager.weight, vo2Max: healthManager.vo2Max, user: $user)
                     }
                     .padding()
                 }
@@ -78,6 +80,6 @@ struct SetupAutoView: View {
 }
 
 #Preview {
-    SetupAutoView()
+    SetupAutoView(user: .constant(nil))
 }
 

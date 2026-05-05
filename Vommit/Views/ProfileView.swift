@@ -41,6 +41,7 @@ struct ProfileView: View {
                 
                 Section {
                     TextField("Test", text: .constant(""))
+                        .textFieldStyle(.plain)
                         
                 }
                 

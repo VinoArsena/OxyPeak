@@ -1,21 +1,15 @@
 import SwiftUI
 
-enum gender: String {
-    case male = "male"
-    case female = "female"
-    case others = "others"
-}
-
 struct SetupManualView: View {
     @State var name: String
-    @State var selectedGender: String = gender.others.rawValue
+    @State var selectedGender: Gender = .others
     @State var birthday: Date
-    @State var height: Double?
-    @State var weight: Double?
-    @State var vo2Max: Double?
+    @State var height: Double? = nil
+    @State var weight: Double? = nil
+    @State var vo2Max: Double? = nil
     @State var navigate = false
     
-//    @Binding var user: User?
+    @Binding var user: User?
     
     
     var body: some View {
@@ -41,9 +35,9 @@ struct SetupManualView: View {
                             Text("Gender")
                                 .bold()
                             Picker("Gender", selection: $selectedGender) {
-                                Text("Male").tag(gender.male.rawValue)
-                                Text("Female").tag(gender.female.rawValue)
-                                Text("Others").tag(gender.others.rawValue)
+                                Text("Male").tag(Gender.male)
+                                Text("Female").tag(Gender.female)
+                                Text("Others").tag(Gender.others)
                             }
                             .pickerStyle(.menu)
                         }
@@ -74,20 +68,23 @@ struct SetupManualView: View {
                 }
                 
                 Button("Continue") {
-//                    user = User(
-//                        name: name,
-//                        dob: birthday,
-//                        gender: selectedGender,
-//                        height: height,
-//                        weight: weight,
-//                        vo2Max: vo2Max
-//                    )
+                    if let h = height, let w = weight, let v = vo2Max {
+                        user = User(
+                            name: name,
+                            dob: birthday,
+                            gender: selectedGender,
+                            height: h,
+                            weight: w,
+                            vo2Max: v
+                        )
+                        navigate = true
+                    }
                     navigate = true
                 }
                 .font(.headline)
                 .buttonStyle(.borderless)
                 .padding()
-//                .disabled()
+                .disabled(name.isEmpty || height == 0 || weight == 0 || vo2Max == 0)
                 .navigationDestination(isPresented: $navigate) {
                     HomeView()
                 }
@@ -129,11 +126,12 @@ struct InputRow<Content: View>: View {
 #Preview {
     SetupManualView(
         name: "Joanne Doe",
-        selectedGender: "Male",
+        selectedGender: Gender.male,
         birthday: Date(),
         height: 170.0,
         weight: 60.0,
         vo2Max: 35.0,
+        user: .constant(nil)
     )
 }
 

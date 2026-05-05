@@ -1,7 +1,8 @@
 import SwiftUI
 
 struct LandingView: View {
-
+    @Binding var user: User?
+    
     var body: some View {
         NavigationStack {
             ZStack {
@@ -33,7 +34,7 @@ struct LandingView: View {
                     Spacer()
 
                     // Button Get Started
-                    NavigationLink(destination: SetupView()) {
+                    NavigationLink(destination: SetupView(user: $user)) {
                         Text("Get Started")
                             .font(.headline)
                             .foregroundColor(.white)
@@ -59,5 +60,5 @@ struct LandingView: View {
 }
 
 #Preview {
-    LandingView()
+    LandingView(user: .constant(nil))
 }

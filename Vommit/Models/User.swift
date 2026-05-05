@@ -1,7 +1,14 @@
 import Foundation
 
-enum Gender {
-    case male, female, others, notset
+enum Gender: String, CaseIterable {
+    case male = "Male"
+    case female = "Female"
+    case others = "Other"
+    case notset = "Unknown"
+    
+    init(from string: String) {
+        self = Gender(rawValue: string) ?? .notset
+    }
 }
 
 struct User {
