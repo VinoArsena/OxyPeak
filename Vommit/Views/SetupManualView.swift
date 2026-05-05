@@ -67,7 +67,7 @@ struct SetupManualView: View {
                     }
                 }
                 
-                Button("Continue") {
+                Button {
                     if let h = height, let w = weight, let v = vo2Max {
                         user = User(
                             name: name,
@@ -80,10 +80,14 @@ struct SetupManualView: View {
                         navigate = true
                     }
                     navigate = true
+                } label: {
+                    Text("Continue")
+                        .frame(maxWidth: .infinity)
+                        .padding(.horizontal)
+                        .padding(.vertical, 8)
                 }
-                .font(.headline)
-                .buttonStyle(.borderless)
-                .padding()
+                .frame(maxWidth: .infinity)
+                .buttonStyle(.glassProminent)
                 .disabled(name.isEmpty || height == 0 || weight == 0 || vo2Max == 0)
                 .navigationDestination(isPresented: $navigate) {
                     HomeView()

@@ -1,89 +1,93 @@
 import SwiftUI
 
 struct HomeView: View {
-    @State private var searchText: String = ""
-    @State private var chosenGrade: Int = 0
-    @State private var navigationId = UUID()
-    
     let mountains: [Mountain] = DatabaseManager.mountains
-    let grades = [
-        (label: "All", value: 0),
-        (label: "Grade 1", value: 1),
-        (label: "Grade 2", value: 2),
-        (label: "Grade 3", value: 3),
-        (label: "Grade 4", value: 4),
-        (label: "Grade 5", value: 5)
-    ]
-    
-    var filteredMountains: [Mountain] {
-        mountains.filter { mountain in
-            let searchTextMatch = searchText.isEmpty || mountain.name.localizedCaseInsensitiveContains(searchText)
-            
-            let gradeMatch = chosenGrade == 0 || mountain.grade == chosenGrade
-            
-            return searchTextMatch && gradeMatch
-        }
-    }
+    @State private var navigate = false
     
     var body: some View {
-        TabView {
-            ZStack {
-                NavigationStack {
-                    Picker("Filter Grades", selection: $chosenGrade) {
-                        ForEach(grades, id: \.value) { option in
-                            Text(option.label).tag(option.value)
-                        }
+        VStack(alignment: .leading) {
+            // Welcome Text
+            VStack(alignment: .leading) {
+                Text("Hi, User")
+                    .font(.largeTitle)
+                    .bold()
+                
+                Text("Ready to Hike today?")
+            }
+            
+            // Profile Card
+            HStack {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("User")
+                        .font(.system(size: 20))
+                        .bold()
+                    Text("Others")
+                    Text("18 years old")
+                    Text("170 cm")
+                    Text("60 kg")
+                }
+                .padding(16)
+                
+                Spacer()
+                
+                Divider()
+                    .frame(height: 175)
+                
+                Spacer()
+                
+                VStack(spacing: 8) {
+                    Text("VO\u{2082} Max")
+                        .bold()
+                    Text("20.8")
+                        .font(.system(size: 32))
+                        .bold()
+                    Text("ml/kg/min")
+                    Button {
+                        // sync
+                    } label: {
+                        Text("Update")
                     }
-                    .pickerStyle(.segmented)
-                    .padding(.horizontal)
-                    .background(Color.background)
-                    
-                    ScrollView {
-                        ForEach(filteredMountains, id: \.id) { mountain in
-                            NavigationLink {
-                                MountainDetailView(mountain: mountain, gradeColorTheme: .orange)
-                            } label: {
-                                MountainCard(mountain: mountain)
-                                    .padding(.bottom, 5)
-                            }
-                            .buttonStyle(.plain)
+                    .buttonStyle(.glassProminent)
+                }
+                .padding(36)
+            }
+            .padding(16)
+            .frame(maxWidth: .infinity)
+            .background(Color.cardBackground)
+            .clipShape(RoundedRectangle(cornerRadius: 26))
+            
+            // Mountain Cards
+            VStack(alignment: .leading, spacing: 12) {
+                Text("Pick Mountain")
+                    .font(.title.bold())
+                
+                ForEach(mountains, id: \.id) { mountain in
+                    HStack{
+                        Button {
+                            navigate = true
+                        } label: {
+                            Image(systemName: "mountain.2")
+                            Text("Mt. " + mountain.name)
                         }
+                        .buttonStyle(.plain)
+                        .navigationDestination(isPresented: $navigate) {
+                            MountainDetailView(mountain: mountain)
+                        }
+                        
+                        Spacer()
                     }
                     .padding(16)
-                    .navigationTitle("Choose Mountain")
-                    .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
-                    .background(Color.background)
+                    .frame(maxWidth: .infinity)
+                    .background(Color.cardBackground)
+                    .clipShape(RoundedRectangle(cornerRadius: 22))
                 }
-                .id(navigationId)
-                .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("PopToRoot"))) { _ in
-                    navigationId = UUID()
-                }
-                
-                .tabItem {
-                    Label("Profile", systemImage: "person")
-                }
-            }
-            .preferredColorScheme(.dark)
-            .background(Color("Background"))
-            
-            .tabItem {
-                Label("Home", systemImage: "house.fill")
             }
             
-            ProfileView(
-                user: User(
-                    name: "Joanne Doe",
-                    dob: Date(),
-                    gender: .others,
-                    height: 170,
-                    weight: 60,
-                    vo2Max: 30
-                ))
-            .tabItem {
-                Label("Profile", systemImage: "person")
-            }
+            Spacer()
         }
-        .background(Color.background)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .padding(16)
+        .preferredColorScheme(.dark)
     }
 }
 

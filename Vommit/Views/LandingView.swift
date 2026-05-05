@@ -42,6 +42,7 @@ struct LandingView: View {
                             .padding(.vertical, 16)
                             .background(Color.blue)
                             .clipShape(Capsule())
+                            .buttonStyle(.glassProminent)
                     }
                     .padding(.horizontal, 40)
                     .padding(.bottom, 16)

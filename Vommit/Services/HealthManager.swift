@@ -1,6 +1,13 @@
 import HealthKit
 import Observation
 
+enum SyncStatus {
+    case syncing
+    case success
+    case failed
+    case empty
+}
+
 @Observable
 class HealthManager {
     @ObservationIgnored let healthStore = HKHealthStore()
@@ -11,6 +18,7 @@ class HealthManager {
     var gender: String = "others"
     var dob: Date = Date()
     var isAuthorized: Bool = false
+    var syncStatus: SyncStatus = .syncing
 
     @ObservationIgnored let allTypes: Set = [
         HKQuantityType(.vo2Max),
@@ -21,15 +29,20 @@ class HealthManager {
     ]
     
     func requestHealthKitAccess() {
-        guard HKHealthStore.isHealthDataAvailable() else { return }
+        guard HKHealthStore.isHealthDataAvailable() else {
+            self.syncStatus = .empty
+            return
+        }
         
         healthStore.requestAuthorization(toShare: nil, read: allTypes) { success, error in
             DispatchQueue.main.async {
                 if success {
                     self.isAuthorized = true
                     self.fetchAllData()
+                    self.syncStatus = .success
                 } else {
                     print("[HealthManager] error: \(String(describing: error?.localizedDescription))")
+                    self.syncStatus = .failed
                 }
             }
         }
