@@ -3,6 +3,7 @@ import SwiftUI
 struct HomeView: View {
     @State private var searchText: String = ""
     @State private var chosenGrade: Int = 0
+    @State private var navigationId = UUID()
     
     let mountains: [Mountain] = DatabaseManager.mountains
     let grades = [
@@ -52,6 +53,10 @@ struct HomeView: View {
                     .navigationTitle("Choose Mountain")
                     .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always))
                     .background(Color.background)
+                }
+                .id(navigationId)
+                .onReceive(NotificationCenter.default.publisher(for: NSNotification.Name("PopToRoot"))) { _ in
+                    navigationId = UUID()
                 }
                 
                 .tabItem {

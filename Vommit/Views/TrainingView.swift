@@ -12,7 +12,7 @@ struct TrainingView: View {
                 VStack(spacing: 0) {
                     TrainingHeader(dismiss: dismiss)
                     CalculationSummaryCard()
-                    RecommendedExerciseSection(navigate: navigate)
+                    RecommendedExerciseSection()
                 }
             }
         }
@@ -100,8 +100,6 @@ struct CalculationSummaryCard: View {
 }
 
 struct RecommendedExerciseSection: View {
-    @State var navigate = false
-    
     let exercises: [Exercise] = [
         Exercise(icon: "figure.walk", title: "Running", desc: "Interval or long run indoor or outdoor."),
         Exercise(icon: "figure.step.training", title: "Step Up", desc: "Stepping up and down a ledge or stair repeatedly."),
@@ -132,7 +130,7 @@ struct RecommendedExerciseSection: View {
             }
             
             Button(action: {
-                navigate = true
+                NotificationCenter.default.post(name: NSNotification.Name("PopToRoot"), object: nil)
             }) {
                 Text("Find Another Mountain")
                     .font(.title3.bold())
@@ -144,9 +142,6 @@ struct RecommendedExerciseSection: View {
             }
             .padding(.horizontal)
             .padding(.top, 12)
-            .navigationDestination(isPresented: $navigate) {
-                HomeView()
-            }
         }
     }
 }
