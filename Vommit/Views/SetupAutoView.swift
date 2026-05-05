@@ -3,6 +3,7 @@ import SwiftUI
 struct SetupAutoView: View {
     @State private var healthManager = HealthManager()
     @State private var navigate = false
+    @State var showNext = false
     
     var body: some View {
         
@@ -23,9 +24,6 @@ struct SetupAutoView: View {
                 
                 Button {
                     healthManager.requestHealthKitAccess()
-                    if healthManager.isAuthorized {
-                        navigate = true
-                    }
                 } label: {
                     HStack {
                         Spacer()
@@ -43,8 +41,29 @@ struct SetupAutoView: View {
                 .buttonStyle(.borderedProminent)
                 .controlSize(.large)
                 .fixedSize(horizontal: true, vertical: true)
+                .onChange(of: healthManager.isAuthorized) {
+                    Task {
+                        try? await Task.sleep(nanoseconds: 1_500_000_000)
+                        
+                        await MainActor.run {
+                            navigate = true
+                        }
+                    }
+                }
                 .navigationDestination(isPresented: $navigate) {
-                    SetupManualView()
+                    SetupManualView(name: "", selectedGender: healthManager.gender, birthday: healthManager.dob, height: healthManager.height, weight: healthManager.weight, vo2Max: healthManager.vo2Max)
+                }
+                
+                if(healthManager.isAuthorized) {
+                    Button {
+                        showNext = true
+                    } label: {
+                        Text("Next")
+                    }
+                    .navigationDestination(isPresented: $showNext) {
+                        SetupManualView(name: "", selectedGender: healthManager.gender, birthday: healthManager.dob, height: healthManager.height, weight: healthManager.weight, vo2Max: healthManager.vo2Max)
+                    }
+                    .padding()
                 }
                 
                 Spacer()

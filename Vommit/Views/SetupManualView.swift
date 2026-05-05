@@ -1,19 +1,18 @@
 import SwiftUI
 
+enum gender: String {
+    case male = "male"
+    case female = "female"
+    case others = "others"
+}
+
 struct SetupManualView: View {
-    
-    @State private var name: String = ""
-    
-    enum gender {
-        case male, female, others
-        var id: Self { self }
-    }
-    @State private var selectedGender: gender = .others
-    
-    @State private var birthday: Date = Date()
-    @State private var height: String = ""
-    @State private var weight: String = ""
-    @State private var vo2Max: String = ""
+    @State var name: String
+    @State var selectedGender: String = gender.others.rawValue
+    @State var birthday: Date
+    @State var height: Double?
+    @State var weight: Double?
+    @State var vo2Max: Double?
     
     var body: some View {
         
@@ -21,8 +20,10 @@ struct SetupManualView: View {
             VStack(spacing: 24) {
                 
                 VStack(spacing: 8) {
-                    Text("Setup Profile").font(.system(size: 34, weight: .bold))
-                    Text("Tell us about yourself").foregroundColor(.secondary)
+                    Text("Setup Profile")
+                        .font(.title.bold())
+                    Text("Tell us about yourself")
+                        .foregroundColor(.secondary)
                 }
                 
                 VStack(spacing: 16) {
@@ -35,13 +36,14 @@ struct SetupManualView: View {
                         VStack(alignment: .leading) {
                             Text("Gender")
                                 .bold()
-                            Picker("TEST", selection: $selectedGender) {
-                                Text("Male").tag(gender.male)
-                                Text("Female").tag(gender.female)
-                                Text("Others").tag(gender.others)
+                            Picker("Gender", selection: $selectedGender) {
+                                Text("Male").tag(gender.male.rawValue)
+                                Text("Female").tag(gender.female.rawValue)
+                                Text("Others").tag(gender.others.rawValue)
                             }
+                            .pickerStyle(.menu)
                         }
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                         
                         VStack(alignment: .leading) {
                             Text("Date of Birth")
@@ -50,19 +52,20 @@ struct SetupManualView: View {
                                 .labelsHidden()
                                 .datePickerStyle(.compact)
                         }
-                        .frame(maxWidth: .infinity)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        
                     }
                     
                     InputRow(label: "Height") {
-                        TextField("175 cm", text: $height)
+                        TextField("175 cm", value: $height, formatter: NumberFormatter())
                     }
                     
                     InputRow(label: "Weight") {
-                        TextField("60 kg", text: $weight)
+                        TextField("60 kg", value: $weight, formatter: NumberFormatter())
                     }
                     
                     InputRow(label: "VO₂ Max") {
-                        TextField("30 ml/kg/min", text: $vo2Max)
+                        TextField("30 ml/kg/min", value: $vo2Max, formatter: NumberFormatter())
                     }
                 }
                 
@@ -108,6 +111,13 @@ struct InputRow<Content: View>: View {
 }
 
 #Preview {
-    SetupManualView()
+    SetupManualView(
+        name: "Joanne Doe",
+        selectedGender: "Male",
+        birthday: Date(),
+        height: 170.0,
+        weight: 60.0,
+        vo2Max: 35.0
+    )
 }
 
