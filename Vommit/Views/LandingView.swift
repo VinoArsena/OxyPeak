@@ -7,26 +7,26 @@ struct LandingView: View {
         NavigationStack {
             ZStack {
                 // Background Image
-                Image("BGFinalVommit")
+                Image("BGFinalOxy")
                     .resizable()
                     .scaledToFill()
                     .ignoresSafeArea()
 
                 VStack(spacing: 0) {
                     // Logo Vommit (Asset Image)
-                    Image("LogoVommit")
+                    Image("LogoOxy")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 190)
+                        .frame(width: 160)
                         .offset(x: -8)
                         .padding(.top, 80)
                     
                     Spacer()
                         .frame(height: 12) 
 
-                    // Subtitle "Check Minimum VO2)
-                    Text("Check minimum **VO\u{2082} Max**\nto safely **summit**")
-                        .font(.system(size: 18))
+                    // Subtitle "Match Your VO2 Max"
+                    Text("**Match Your VO\u{2082} Max** to the Mountain\n and Climb with Confidence")
+                        .font(.system(size: 20, weight: .regular))
                         .foregroundColor(.white)
                         .multilineTextAlignment(.center)
                         .lineSpacing(4)
@@ -49,10 +49,10 @@ struct LandingView: View {
                     // Footer
                     Text("Based on research from\nAmerican College of Sports Medicine")
                         .multilineTextAlignment(.center)
-                        .font(.system(size: 12, weight: .light))
+                        .font(.system(size: 13, weight: .light))
                         .italic()
                         .foregroundColor(.white)
-                        .padding(.bottom, 70)
+                        .padding(.bottom, 100)
                 }
             }
         }
