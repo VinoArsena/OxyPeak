@@ -7,7 +7,7 @@ struct VommitApp: App {
 
     var body: some Scene {
         WindowGroup {
-            LandingView(user: .constant(nil))
+            LandingView(user: $currentUser)
                 .preferredColorScheme(.dark)
                 .background(Color("Background")).ignoresSafeArea()
         }

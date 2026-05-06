@@ -79,7 +79,6 @@ struct SetupManualView: View {
                         )
                         navigate = true
                     }
-                    navigate = true
                 } label: {
                     Text("Continue")
                         .frame(maxWidth: .infinity)
@@ -88,7 +87,7 @@ struct SetupManualView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .buttonStyle(.glassProminent)
-                .disabled(name.isEmpty || height == 0 || weight == 0 || vo2Max == 0)
+                .disabled(name.isEmpty || (height ?? 0) == 0 || (weight ?? 0) == 0 || (vo2Max ?? 0) == 0)
                 .navigationDestination(isPresented: $navigate) {
                     HomeView(user: $user)
                 }
