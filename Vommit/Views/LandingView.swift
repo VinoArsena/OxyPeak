@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct LandingView: View {
+    @State private var navigate = false
     @Binding var user: User?
     
     var body: some View {
@@ -34,18 +35,21 @@ struct LandingView: View {
                     Spacer()
 
                     // Button Get Started
-                    NavigationLink(destination: SetupView(user: $user)) {
+                    Button {
+                        navigate = true
+                    } label: {
                         Text("Get Started")
-                            .font(.headline)
-                            .foregroundColor(.white)
+                            .padding(8)
                             .frame(maxWidth: .infinity)
-                            .padding(.vertical, 16)
-                            .background(Color.blue)
-                            .clipShape(Capsule())
-                            .buttonStyle(.glassProminent)
                     }
-                    .padding(.horizontal, 40)
-                    .padding(.bottom, 15)
+                    .buttonStyle(.glassProminent)
+                    .padding(.horizontal, 36)
+                    .padding(.vertical, 16)
+                    .navigationDestination(isPresented: $navigate){
+                        SetupView(user: $user)
+                    }
+                    
+                    
 
                     // Footer
                     Text("Based on research from\nAmerican College of Sports Medicine")
