@@ -2,7 +2,7 @@ import SwiftUI
 
 struct HomeView: View {
     let mountains: [Mountain] = DatabaseManager.mountains
-    @State private var navigate = false
+    @State private var selectedMountain: Mountain?
     @Binding var user: User?
     
     var age: Int {
@@ -74,16 +74,13 @@ struct HomeView: View {
                 ForEach(mountains, id: \.id) { mountain in
                     HStack{
                         Button {
-                            navigate = true
+                            selectedMountain = mountain
                         } label: {
                             Image(systemName: "mountain.2")
                             Text("Mt. " + mountain.name)
                         }
                         .buttonStyle(.plain)
-                        .navigationDestination(isPresented: $navigate) {
-                            MountainDetailView(mountain: mountain, user: $user)
-                        }
-                        
+
                         Spacer()
                     }
                     .padding(16)
@@ -98,6 +95,9 @@ struct HomeView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .padding(16)
         .preferredColorScheme(.dark)
+        .navigationDestination(item: $selectedMountain) { mountain in
+            MountainDetailView(mountain: mountain, user: $user)
+        }
     }
 }
 

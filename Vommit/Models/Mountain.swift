@@ -1,7 +1,7 @@
 import Foundation
 import SwiftUI
 
-struct Mountain {
+struct Mountain: Hashable {
     let id: UUID
     let name: String
     let imageUrl: String
@@ -12,6 +12,10 @@ struct Mountain {
     let estimation: Range<Int>
     let overview: String
     let vo2max: Double
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+
     var themeColor: Color {
         switch grade {
         case 1: return .brown
@@ -23,8 +27,8 @@ struct Mountain {
         }
     }
     
-    init(id: UUID = UUID(), name: String, imageUrl: String, grade: Int, duration: Int, elevation: Int, distance: Double, estimation: Range<Int>, overview: String, vo2max: Double) {
-        self.id = id
+    init(name: String, imageUrl: String, grade: Int, duration: Int, elevation: Int, distance: Double, estimation: Range<Int>, overview: String, vo2max: Double) {
+        self.id = UUID()
         self.name = name
         self.imageUrl = imageUrl
         self.grade = grade
