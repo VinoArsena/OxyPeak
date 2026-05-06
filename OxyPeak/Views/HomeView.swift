@@ -103,6 +103,7 @@ struct HomeView: View {
             .blur(radius: isShowingModal ? 4 : 0)
             .navigationBarBackButtonHidden()
             .preferredColorScheme(.dark)
+            .background(Color("Background"))
             .navigationDestination(item: $selectedMountain) { mountain in
                 AnalysisView(mountain: mountain, user: $user) {
                     selectedMountain = nil

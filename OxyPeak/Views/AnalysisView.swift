@@ -113,6 +113,7 @@ struct AnalysisView: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .navigationBarBackButtonHidden()
         .preferredColorScheme(.dark)
+        .background(Color("Background"))
     }
 }
 

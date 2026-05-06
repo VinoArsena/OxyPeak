@@ -83,6 +83,7 @@ struct RecommendationView: View {
         }
         .padding()
         .navigationBarBackButtonHidden()
+        .background(Color("Background"))
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .preferredColorScheme(.dark)
     }

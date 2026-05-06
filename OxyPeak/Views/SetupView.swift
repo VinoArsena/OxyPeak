@@ -12,7 +12,7 @@ struct SetupView: View {
         ZStack {
             VStack {
                 Text("Sync Health App")
-                    .font(.title.bold())
+                    .font(.largeTitle.bold())
                 
                 Spacer()
                 

@@ -18,8 +18,8 @@ struct SetupManualView: View {
                 
                 VStack(spacing: 8) {
                     Text("Setup Profile")
-                        .font(.title.bold())
-                    Text("Tell us about yourself")
+                        .font(.largeTitle.bold())
+                    Text("Fill all the form")
                         .foregroundColor(.secondary)
                 }
                 
