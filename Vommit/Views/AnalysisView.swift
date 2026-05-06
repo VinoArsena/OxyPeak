@@ -5,6 +5,8 @@ struct MountainDetailView: View {
     @State private var navigate = false
     @Environment(\.dismiss) var dismiss
     
+    @Binding var user: User?
+    
     var body: some View {
         VStack(spacing: 30) {
             HStack {
@@ -79,7 +81,7 @@ struct MountainDetailView: View {
             }
             .buttonStyle(.glassProminent)
             .navigationDestination(isPresented: $navigate) {
-                RecommendationView()
+                RecommendationView(user: $user)
             }
             
             VStack {
@@ -118,5 +120,7 @@ struct MountainDetailView: View {
         estimation: 3..<4,
         overview: "Active volcano in Lombok with challenging terrain and stunning crater views, routes range from easiest via Senaru, via Torean, to most demanding via Sembalun, with oxygen levels decreasing significantly above 2,500 meters.",
         vo2max: 15
-    ))
+    ),
+        user: .constant(nil)
+    )
 }

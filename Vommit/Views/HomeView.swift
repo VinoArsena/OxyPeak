@@ -3,12 +3,20 @@ import SwiftUI
 struct HomeView: View {
     let mountains: [Mountain] = DatabaseManager.mountains
     @State private var navigate = false
+    @Binding var user: User?
+    
+    var age: Int {
+        guard let birthday = user?.dob else { return 0 }
+        let calendar = Calendar.current
+        let ageComponents = calendar.dateComponents([.year], from: birthday, to: Date())
+        return ageComponents.year ?? 0
+    }
     
     var body: some View {
         VStack(alignment: .leading) {
             // Welcome Text
             VStack(alignment: .leading) {
-                Text("Hi, User")
+                Text("Hi, " + (user?.name ?? "User"))
                     .font(.largeTitle)
                     .bold()
                 
@@ -18,13 +26,15 @@ struct HomeView: View {
             // Profile Card
             HStack {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("User")
+                    Text(user?.name ?? "User")
                         .font(.system(size: 20))
                         .bold()
+                    
                     Text("Others")
-                    Text("18 years old")
-                    Text("170 cm")
-                    Text("60 kg")
+                    Text("\(age) years old")
+                    
+                    Text("\(String(format: "%.0f", user?.height ?? 170)) cm")
+                    Text("\(String(format: "%.0f", user?.weight ?? 70)) kg")
                 }
                 .padding(16)
                 
@@ -38,7 +48,7 @@ struct HomeView: View {
                 VStack(spacing: 8) {
                     Text("VO\u{2082} Max")
                         .bold()
-                    Text("20.8")
+                    Text("\(String(format: "%.0f", user?.vo2Max ?? 30))")
                         .font(.system(size: 32))
                         .bold()
                     Text("ml/kg/min")
@@ -71,7 +81,7 @@ struct HomeView: View {
                         }
                         .buttonStyle(.plain)
                         .navigationDestination(isPresented: $navigate) {
-                            MountainDetailView(mountain: mountain)
+                            MountainDetailView(mountain: mountain, user: $user)
                         }
                         
                         Spacer()
@@ -92,6 +102,6 @@ struct HomeView: View {
 }
 
 #Preview {
-    HomeView()
+    HomeView(user: .constant(nil))
 }
 

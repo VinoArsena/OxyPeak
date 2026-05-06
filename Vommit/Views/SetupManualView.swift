@@ -1,13 +1,13 @@
 import SwiftUI
 
 struct SetupManualView: View {
-    @State var name: String
-    @State var selectedGender: Gender = .others
-    @State var birthday: Date
-    @State var height: Double? = nil
-    @State var weight: Double? = nil
-    @State var vo2Max: Double? = nil
-    @State var navigate = false
+    @State private var name: String = ""
+    @State private var selectedGender: Gender = .others
+    @State private var birthday: Date = Date()
+    @State private var height: Double? = nil
+    @State private var weight: Double? = nil
+    @State private var vo2Max: Double? = nil
+    @State private var navigate = false
     
     @Binding var user: User?
     
@@ -90,7 +90,7 @@ struct SetupManualView: View {
                 .buttonStyle(.glassProminent)
                 .disabled(name.isEmpty || height == 0 || weight == 0 || vo2Max == 0)
                 .navigationDestination(isPresented: $navigate) {
-                    HomeView()
+                    HomeView(user: $user)
                 }
                 
                 Spacer()
@@ -129,12 +129,6 @@ struct InputRow<Content: View>: View {
 
 #Preview {
     SetupManualView(
-        name: "Joanne Doe",
-        selectedGender: Gender.male,
-        birthday: Date(),
-        height: 170.0,
-        weight: 60.0,
-        vo2Max: 35.0,
         user: .constant(nil)
     )
 }

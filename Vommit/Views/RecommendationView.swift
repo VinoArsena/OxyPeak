@@ -11,6 +11,8 @@ struct RecommendationView: View {
     @State private var navigate = false
     @Environment(\.dismiss) var dismiss
     
+    @Binding var user: User?
+    
     var body: some View {
         VStack(spacing: 30) {
             HStack {
@@ -72,7 +74,7 @@ struct RecommendationView: View {
             }
             .buttonStyle(.glassProminent)
             .navigationDestination(isPresented: $navigate) {
-                HomeView()
+                HomeView(user: $user)
             }
             
             Text("Choose a mountain that matches your\ncurrent VO₂ Max")
@@ -90,5 +92,5 @@ struct RecommendationView: View {
 }
 
 #Preview {
-    RecommendationView()
+    RecommendationView(user: .constant(nil))
 }

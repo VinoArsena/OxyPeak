@@ -87,8 +87,17 @@ struct SetupView: View {
                 }
             }
         }
-        .onChange(of: healthManager.syncStatus) { _, newValue in
-            if newValue == .success {
+        .onChange(of: healthManager.syncStatus) {
+            if healthManager.syncStatus == .success {
+                user = User(
+                    name: "",
+                    dob: healthManager.dob,
+                    gender: Gender(from: healthManager.gender),
+                    height: healthManager.height,
+                    weight: healthManager.weight,
+                    vo2Max: healthManager.vo2Max
+                )
+                
                 Task {
                     try? await Task.sleep(nanoseconds: 1_000_000_000)
                     await MainActor.run {
@@ -98,17 +107,8 @@ struct SetupView: View {
             }
         }
         .navigationDestination(isPresented: $navigate) {
-            SetupManualView(
-                name: "",
-                selectedGender: Gender(from: healthManager.gender),
-                birthday: healthManager.dob,
-                height: healthManager.height,
-                weight: healthManager.weight,
-                vo2Max: healthManager.vo2Max,
-                user: $user
-            )
+            SetupManualView(user: $user)
         }
-        
     }
 }
 
