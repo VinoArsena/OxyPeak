@@ -37,6 +37,7 @@ struct SetupManualView: View {
                                 Text("Male").tag(Gender.male)
                                 Text("Female").tag(Gender.female)
                                 Text("Others").tag(Gender.others)
+                                Text("Select..").tag(Gender.notset)
                             }
                             .pickerStyle(.menu)
                         }
@@ -51,18 +52,6 @@ struct SetupManualView: View {
                         }
                         .frame(maxWidth: .infinity, alignment: .leading)
                         
-                    }
-                    
-                    HStack {
-                        Text("Height ").font(.headline).foregroundColor(.white)
-                        Text("cm").font(.subheadline).foregroundColor(.secondary)
-                        TextField("", value: $height, formatter: NumberFormatter())
-                            .keyboardType(.numberPad)
-                            .padding(.horizontal, 12)
-                            .frame(height: 54)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .background(Color.white.opacity(0.1))
-                            .cornerRadius(20)
                     }
                     
                     InputRow(label: "Height") {
@@ -80,6 +69,7 @@ struct SetupManualView: View {
                             .keyboardType(.numberPad)
                     }
                 }
+                .padding(.bottom, 8)
                 
                 Button {
                     user = User(
@@ -93,7 +83,6 @@ struct SetupManualView: View {
                     navigate = true
                 } label: {
                     Text("Continue")
-                        .frame(maxWidth: .infinity)
                         .padding(.horizontal)
                         .padding(.vertical, 8)
                 }

@@ -1,10 +1,10 @@
 import Foundation
 
 enum Gender: String, CaseIterable {
-    case male = "Male"
-    case female = "Female"
-    case others = "Other"
-    case notset = "Unknown"
+    case male = "male"
+    case female = "female"
+    case others = "other"
+    case notset = "unknown"
     
     init(from string: String) {
         self = Gender(rawValue: string) ?? .notset

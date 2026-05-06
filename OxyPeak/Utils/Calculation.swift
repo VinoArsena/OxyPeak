@@ -8,6 +8,6 @@ import HealthKit
 
 extension HKUnit {
     static func mlPerKgMin() -> HKUnit {
-        return HKUnit.gramUnit(with: .milli).unitDivided(by: .gramUnit(with: .kilo)).unitDivided(by: .minute())
+        return HKUnit.literUnit(with: .milli).unitDivided(by: .gramUnit(with: .kilo)).unitDivided(by: .minute())
     }
 }

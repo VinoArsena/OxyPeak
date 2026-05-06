@@ -80,7 +80,7 @@ struct SetupView: View {
         .onAppear {
             if healthManager.isFetchComplete == false {
                 Task {
-                    try? await Task.sleep(nanoseconds: 2_000_000_000)
+                    try? await Task.sleep(nanoseconds: 1_000_000_000)
                     await MainActor.run {
                         healthManager.requestHealthKitAccess()
                     }
