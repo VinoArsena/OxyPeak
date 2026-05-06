@@ -8,7 +8,7 @@ import SwiftUI
 
 struct UpdateVO2MaxView: View {
     @State private var newValue: String = ""
-    @State private var oldValue: String = "Old Value: 20.8"
+    @State private var oldValue: String = "Old Value: 30"
     
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {

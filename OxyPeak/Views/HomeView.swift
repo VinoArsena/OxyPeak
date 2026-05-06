@@ -99,8 +99,9 @@ struct HomeView: View {
                 Spacer()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .padding(16)
+            .padding(24)
             .blur(radius: isShowingModal ? 4 : 0)
+            .navigationBarBackButtonHidden()
             .preferredColorScheme(.dark)
             .navigationDestination(item: $selectedMountain) { mountain in
                 AnalysisView(mountain: mountain, user: $user) {
