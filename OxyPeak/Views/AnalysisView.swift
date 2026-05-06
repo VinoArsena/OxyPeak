@@ -26,7 +26,7 @@ struct AnalysisView: View {
                     .font(.largeTitle)
                     .bold()
                 Spacer()
-                Image(systemName: "circle.dashed")
+                Image(systemName: "circle.fill")
                     .bold()
                     .foregroundStyle(mountain.themeColor)
                 Text("Grade " + String(mountain.grade))
