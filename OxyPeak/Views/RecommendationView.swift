@@ -75,7 +75,7 @@ struct RecommendationView: View {
             .buttonStyle(.glassProminent)
             
             Text("Choose a mountain that matches your\ncurrent VO₂ Max")
-                .font(.caption)
+                .font(.subheadline)
                 .foregroundStyle(.gray)
                 .multilineTextAlignment(.center)
             

@@ -14,18 +14,18 @@ struct StatsCard: View {
     }
     
     var body: some View {
-        HStack(spacing: 0) {
+        HStack(alignment: .center) {
             // Duration
             HStack {
                 Image(systemName: "clock")
-                    .font(.system(size: 20))
+                    .font(.title2)
                     .foregroundColor(.white)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Duration")
-                        .font(.caption)
+                        .font(.callout)
                         .foregroundStyle(.secondary)
                     Text("\(mountain.estimation.lowerBound) - \(mountain.estimation.upperBound) d")
-                        .font(.subheadline.bold())
+                        .bold()
                         .foregroundColor(.white)
                 }
             }
@@ -34,14 +34,14 @@ struct StatsCard: View {
             // Elevation
             HStack {
                 Image(systemName: "figure.walk")
-                    .font(.system(size: 20))
+                    .font(.title2)
                     .foregroundColor(.white)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Elevation")
-                        .font(.caption)
+                        .font(.callout)
                         .foregroundStyle(.secondary)
                     Text("\(formatNumber(Double(mountain.elevation))) masl")
-                        .font(.subheadline.bold())
+                        .bold()
                         .foregroundColor(.white)
                 }
             }
@@ -50,20 +50,19 @@ struct StatsCard: View {
             // Distance
             HStack {
                 Image(systemName: "point.topleft.filled.down.to.point.bottomright.curvepath")
-                    .font(.system(size: 20))
+                    .font(.title2)
                     .foregroundColor(.white)
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Distance")
-                        .font(.caption)
+                        .font(.callout)
                         .foregroundStyle(.secondary)
                     Text("\(formatNumber(mountain.distance)) km")
-                        .font(.subheadline.bold())
+                        .bold()
                         .foregroundColor(.white)
                 }
             }
             .frame(maxWidth: .infinity, alignment: .center)
         }
-        .padding(.horizontal)
         .padding(.top, 16)
     }
 }

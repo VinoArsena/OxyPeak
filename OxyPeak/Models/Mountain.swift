@@ -19,11 +19,11 @@ struct Mountain: Hashable, Identifiable {
 
     var themeColor: Color {
         switch grade {
-        case 1: return .brown
-        case 2: return .green
-        case 3: return .blue
-        case 4: return .purple
-        case 5: return .red
+        case 1: return .brown.opacity(0.3)
+        case 2: return .green.opacity(0.3)
+        case 3: return .blue.opacity(0.3)
+        case 4: return .purple.opacity(0.3)
+        case 5: return .red.opacity(0.3)
         default: return .gray
         }
     }

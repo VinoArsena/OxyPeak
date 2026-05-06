@@ -50,7 +50,7 @@ struct AnalysisView: View {
                 VStack(spacing: 5) {
                     Text("You")
                         .bold()
-                    Text("20.8")
+                    Text("30")
                         .font(.title)
                         .bold()
                     Text("ml/kg/min")
@@ -65,7 +65,7 @@ struct AnalysisView: View {
                 VStack(spacing: 5) {
                     Text("Mountain")
                         .bold()
-                    Text("30.8")
+                    Text("40")
                         .font(.title)
                         .bold()
                     Text("ml/kg/min")
@@ -95,16 +95,16 @@ struct AnalysisView: View {
                 HStack {
                     Image(systemName: "book.pages")
                     Text("The Science Behind")
-                        .font(.caption)
+                        .font(.callout)
                         .bold()
                 }
                 .padding(.bottom, 4)
                 
-                Text("Using your route gradient and ascent window, we’ve calculated the minimum engine size (VO₂ Max) required to complete your summit safely.")
-                    .font(.caption2)
-                    .fontWeight(.thin)
+                Text("Using your route gradient and ascent window, we’ve calculated the minimum VO₂ Max required to complete your summit safely.")
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
-                    .padding(.horizontal, 60)
+                    .padding(.horizontal, 52)
             }
             
             Spacer()

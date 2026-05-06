@@ -58,13 +58,13 @@ struct SetupView: View {
                     } label: {
                         HStack(spacing: 16) {
                             Image(systemName: "gearshape.2.fill")
-                                .font(.title)
+                                .font(.title3)
                             Text("Input Data Manually")
                                 .bold()
                         }
+                        .padding(8)
                     }
-                    .buttonStyle(.borderedProminent)
-                    .controlSize(.large)
+                    .buttonStyle(.glassProminent)
                     .padding()
 //                }
                 

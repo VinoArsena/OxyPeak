@@ -17,35 +17,32 @@ struct HomeView: View {
     
     var body: some View {
         ZStack {
-            VStack(alignment: .leading) {
+            VStack(alignment: .leading, spacing: 20) {
                 // Welcome Text
                 VStack(alignment: .leading) {
                     Text("Hi, " + (user?.name ?? "User"))
                         .font(.largeTitle)
                         .bold()
                     
-                    Text("Ready to Hike today?")
+                    Text("Ready to check?")
                 }
                 
                 // Profile Card
                 HStack {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text(user?.name ?? "User")
-                            .font(.system(size: 20))
-                            .bold()
-                        
                         Text("Others")
                         Text("\(age) years old")
                         
                         Text("\(String(format: "%.0f", user?.height ?? 170)) cm")
                         Text("\(String(format: "%.0f", user?.weight ?? 70)) kg")
                     }
-                    .padding(16)
+                    .frame(maxWidth: .infinity)
                     
                     Spacer()
                     
                     Divider()
-                        .frame(height: 175)
+                        .frame(height: 120)
+                        .foregroundStyle(.gray)
                     
                     Spacer()
                     
@@ -65,20 +62,19 @@ struct HomeView: View {
                         }
                         .buttonStyle(.glassProminent)
                     }
-                    .padding(36)
+                    .frame(maxWidth: .infinity)
                 }
-                .padding(16)
-                .frame(maxWidth: .infinity)
+                .padding(24)
                 .background(Color.cardBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 26))
                 
                 // Mountain Cards
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: 16) {
                     Text("Pick Mountain")
                         .font(.title.bold())
                     
                     ForEach(mountains) { mountain in
-                        HStack{
+                        HStack {
                             Button {
                                 selectedMountain = mountain
                             } label: {
