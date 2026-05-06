@@ -23,6 +23,9 @@ struct MountainDetailView: View {
                     .font(.largeTitle)
                     .bold()
                 Spacer()
+                Image(systemName: "circle.dashed")
+                    .bold()
+                    .foregroundStyle(mountain.themeColor)
                 Text("Grade " + String(mountain.grade))
             }
             
@@ -36,10 +39,11 @@ struct MountainDetailView: View {
                 }
                 
                 Text("You are below the target")
+                    .font(.headline)
                     .foregroundStyle(.red)
             }
             
-            HStack {
+            HStack(spacing: 8) {
                 VStack(spacing: 5) {
                     Text("You")
                         .bold()
@@ -48,9 +52,10 @@ struct MountainDetailView: View {
                         .bold()
                     Text("ml/kg/min")
                 }
-                .padding(50)
+                .padding(24)
+                .frame(maxWidth: .infinity)
                 .background(Color.cardBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .clipShape(RoundedRectangle(cornerRadius: 26))
                 
                 Spacer()
                 
@@ -62,9 +67,10 @@ struct MountainDetailView: View {
                         .bold()
                     Text("ml/kg/min")
                 }
-                .padding(50)
+                .padding(24)
+                .frame(maxWidth: .infinity)
                 .background(Color.cardBackground)
-                .clipShape(RoundedRectangle(cornerRadius: 20))
+                .clipShape(RoundedRectangle(cornerRadius: 26))
             }
             .frame(maxWidth: .infinity)
             
