@@ -24,15 +24,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B8045B8A2FA1AEA300D746F7 /* Vommit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vommit.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8045B992FA1AEA400D746F7 /* VommitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VommitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		B8045BA32FA1AEA400D746F7 /* VommitUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VommitUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8045B8A2FA1AEA300D746F7 /* OxyPeak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OxyPeak.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8045B992FA1AEA400D746F7 /* OxyPeakTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OxyPeakTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B8045BA32FA1AEA400D746F7 /* OxyPeakUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OxyPeakUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		B8045B8C2FA1AEA300D746F7 /* Vommit */ = {
+		B8045B8C2FA1AEA300D746F7 /* OxyPeak */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Vommit;
+			path = OxyPeak;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -65,7 +65,7 @@
 		B8045B812FA1AEA300D746F7 = {
 			isa = PBXGroup;
 			children = (
-				B8045B8C2FA1AEA300D746F7 /* Vommit */,
+				B8045B8C2FA1AEA300D746F7 /* OxyPeak */,
 				B8045B8B2FA1AEA300D746F7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -73,9 +73,9 @@
 		B8045B8B2FA1AEA300D746F7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B8045B8A2FA1AEA300D746F7 /* Vommit.app */,
-				B8045B992FA1AEA400D746F7 /* VommitTests.xctest */,
-				B8045BA32FA1AEA400D746F7 /* VommitUITests.xctest */,
+				B8045B8A2FA1AEA300D746F7 /* OxyPeak.app */,
+				B8045B992FA1AEA400D746F7 /* OxyPeakTests.xctest */,
+				B8045BA32FA1AEA400D746F7 /* OxyPeakUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,9 +83,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		B8045B892FA1AEA300D746F7 /* Vommit */ = {
+		B8045B892FA1AEA300D746F7 /* OxyPeak */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8045BAD2FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "Vommit" */;
+			buildConfigurationList = B8045BAD2FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "OxyPeak" */;
 			buildPhases = (
 				B8045B862FA1AEA300D746F7 /* Sources */,
 				B8045B872FA1AEA300D746F7 /* Frameworks */,
@@ -96,18 +96,18 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				B8045B8C2FA1AEA300D746F7 /* Vommit */,
+				B8045B8C2FA1AEA300D746F7 /* OxyPeak */,
 			);
-			name = Vommit;
+			name = OxyPeak;
 			packageProductDependencies = (
 			);
 			productName = Vommit;
-			productReference = B8045B8A2FA1AEA300D746F7 /* Vommit.app */;
+			productReference = B8045B8A2FA1AEA300D746F7 /* OxyPeak.app */;
 			productType = "com.apple.product-type.application";
 		};
-		B8045B982FA1AEA400D746F7 /* VommitTests */ = {
+		B8045B982FA1AEA400D746F7 /* OxyPeakTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8045BB02FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "VommitTests" */;
+			buildConfigurationList = B8045BB02FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "OxyPeakTests" */;
 			buildPhases = (
 				B8045B952FA1AEA400D746F7 /* Sources */,
 				B8045B962FA1AEA400D746F7 /* Frameworks */,
@@ -118,16 +118,16 @@
 			dependencies = (
 				B8045B9B2FA1AEA400D746F7 /* PBXTargetDependency */,
 			);
-			name = VommitTests;
+			name = OxyPeakTests;
 			packageProductDependencies = (
 			);
 			productName = VommitTests;
-			productReference = B8045B992FA1AEA400D746F7 /* VommitTests.xctest */;
+			productReference = B8045B992FA1AEA400D746F7 /* OxyPeakTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		B8045BA22FA1AEA400D746F7 /* VommitUITests */ = {
+		B8045BA22FA1AEA400D746F7 /* OxyPeakUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = B8045BB32FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "VommitUITests" */;
+			buildConfigurationList = B8045BB32FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "OxyPeakUITests" */;
 			buildPhases = (
 				B8045B9F2FA1AEA400D746F7 /* Sources */,
 				B8045BA02FA1AEA400D746F7 /* Frameworks */,
@@ -138,11 +138,11 @@
 			dependencies = (
 				B8045BA52FA1AEA400D746F7 /* PBXTargetDependency */,
 			);
-			name = VommitUITests;
+			name = OxyPeakUITests;
 			packageProductDependencies = (
 			);
 			productName = VommitUITests;
-			productReference = B8045BA32FA1AEA400D746F7 /* VommitUITests.xctest */;
+			productReference = B8045BA32FA1AEA400D746F7 /* OxyPeakUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -168,7 +168,7 @@
 					};
 				};
 			};
-			buildConfigurationList = B8045B852FA1AEA300D746F7 /* Build configuration list for PBXProject "Vommit" */;
+			buildConfigurationList = B8045B852FA1AEA300D746F7 /* Build configuration list for PBXProject "OxyPeak" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -182,9 +182,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				B8045B892FA1AEA300D746F7 /* Vommit */,
-				B8045B982FA1AEA400D746F7 /* VommitTests */,
-				B8045BA22FA1AEA400D746F7 /* VommitUITests */,
+				B8045B892FA1AEA300D746F7 /* OxyPeak */,
+				B8045B982FA1AEA400D746F7 /* OxyPeakTests */,
+				B8045BA22FA1AEA400D746F7 /* OxyPeakUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -240,12 +240,12 @@
 /* Begin PBXTargetDependency section */
 		B8045B9B2FA1AEA400D746F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B8045B892FA1AEA300D746F7 /* Vommit */;
+			target = B8045B892FA1AEA300D746F7 /* OxyPeak */;
 			targetProxy = B8045B9A2FA1AEA400D746F7 /* PBXContainerItemProxy */;
 		};
 		B8045BA52FA1AEA400D746F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = B8045B892FA1AEA300D746F7 /* Vommit */;
+			target = B8045B892FA1AEA300D746F7 /* OxyPeak */;
 			targetProxy = B8045BA42FA1AEA400D746F7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -460,7 +460,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vommit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vommit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OxyPeak.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OxyPeak";
 			};
 			name = Debug;
 		};
@@ -482,7 +482,7 @@
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Vommit.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Vommit";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OxyPeak.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/OxyPeak";
 			};
 			name = Release;
 		};
@@ -529,7 +529,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		B8045B852FA1AEA300D746F7 /* Build configuration list for PBXProject "Vommit" */ = {
+		B8045B852FA1AEA300D746F7 /* Build configuration list for PBXProject "OxyPeak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8045BAB2FA1AEA400D746F7 /* Debug */,
@@ -538,7 +538,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8045BAD2FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "Vommit" */ = {
+		B8045BAD2FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "OxyPeak" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8045BAE2FA1AEA400D746F7 /* Debug */,
@@ -547,7 +547,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8045BB02FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "VommitTests" */ = {
+		B8045BB02FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "OxyPeakTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8045BB12FA1AEA400D746F7 /* Debug */,
@@ -556,7 +556,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		B8045BB32FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "VommitUITests" */ = {
+		B8045BB32FA1AEA400D746F7 /* Build configuration list for PBXNativeTarget "OxyPeakUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				B8045BB42FA1AEA400D746F7 /* Debug */,

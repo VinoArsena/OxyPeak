@@ -1,38 +1,28 @@
 import HealthKit
 import Observation
 
-enum SyncStatus {
-    case syncing
-    case success
-    case failed
-    case empty
-}
-
 @Observable
 class HealthManager {
     @ObservationIgnored let healthStore = HKHealthStore()
-
+    
     var vo2Max: Double = 0.0
     var height: Double = 0.0
     var weight: Double = 0.0
     var gender: String = "others"
     var dob: Date = Date()
     var isAuthorized: Bool = false
-    var syncStatus: SyncStatus = .syncing
-
+    var isFetchComplete: Bool = false
+    
     @ObservationIgnored let allTypes: Set = [
         HKQuantityType(.vo2Max),
-        HKQuantityType(.height),			
-        HKQuantityType(.bodyMass),	
+        HKQuantityType(.height),
+        HKQuantityType(.bodyMass),
         HKCharacteristicType(.dateOfBirth),
         HKCharacteristicType(.biologicalSex)
     ]
     
     func requestHealthKitAccess() {
-        guard HKHealthStore.isHealthDataAvailable() else {
-            syncStatus = .empty
-            return
-        }
+        guard HKHealthStore.isHealthDataAvailable() else { return }
         
         healthStore.requestAuthorization(toShare: nil, read: allTypes) { [weak self] success, error in
             guard let self else { return }
@@ -41,24 +31,30 @@ class HealthManager {
                 if success {
                     self.isAuthorized = true
                     self.fetchAllData()
-                    self.syncStatus = .success
                 } else {
-//                    print("[HealthManager] error: \(String(describing: error?.localizedDescription))")
-                    self.syncStatus = .failed
+                    print("[HealthManager] error: \(String(describing: error?.localizedDescription))")
                 }
             }
         }
     }
     
     func fetchAllData() {
-        fetchVO2Max()
-        fetchWeight()
-        fetchHeight()
-        fetchDOB()
-        fetchGender()
+        let group = DispatchGroup()
+        
+        fetchVO2Max(group: group)
+        fetchWeight(group: group)
+        fetchHeight(group: group)
+        fetchDOB(group: group)
+        fetchGender(group: group)
+        
+        group.notify(queue: .main) { [weak self] in
+            guard let self else { return }
+            
+            self.isFetchComplete = true
+        }
     }
     
-    private func fetchVO2Max() {
+    private func fetchVO2Max(group: DispatchGroup) {
         let type = HKQuantityType.quantityType(forIdentifier: .vo2Max)!
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
@@ -81,10 +77,11 @@ class HealthManager {
         healthStore.execute(query)
     }
     
-    private func fetchWeight() {
+    private func fetchWeight(group: DispatchGroup) {
         let type = HKQuantityType.quantityType(forIdentifier: .bodyMass)!
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
+        group.enter()
         let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, error in
             
             if let error = error {
@@ -104,10 +101,11 @@ class HealthManager {
         healthStore.execute(query)
     }
     
-    private func fetchHeight() {
+    private func fetchHeight(group: DispatchGroup) {
         let type = HKQuantityType.quantityType(forIdentifier: .height)!
         let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierEndDate, ascending: false)
         
+        group.enter()
         let query = HKSampleQuery(sampleType: type, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, error in
             
             if let error = error {
@@ -127,7 +125,10 @@ class HealthManager {
         healthStore.execute(query)
     }
     
-    private func fetchDOB() {
+    private func fetchDOB(group: DispatchGroup) {
+        group.enter()
+        defer { group.leave() }
+        
         do {
             let dobComponents = try healthStore.dateOfBirthComponents()
             
@@ -144,7 +145,10 @@ class HealthManager {
         }
     }
     
-    private func fetchGender() {
+    private func fetchGender(group: DispatchGroup) {
+        group.enter()
+        defer { group.leave() }
+        
         do {
             let biologicalSexObject = try healthStore.biologicalSex()
             let sex = biologicalSexObject.biologicalSex

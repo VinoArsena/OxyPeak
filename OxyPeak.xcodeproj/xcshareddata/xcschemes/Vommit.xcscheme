@@ -16,9 +16,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8045B892FA1AEA300D746F7"
-               BuildableName = "Vommit.app"
-               BlueprintName = "Vommit"
-               ReferencedContainer = "container:Vommit.xcodeproj">
+               BuildableName = "OxyPeak.app"
+               BlueprintName = "OxyPeak"
+               ReferencedContainer = "container:OxyPeak.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -36,9 +36,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8045B982FA1AEA400D746F7"
-               BuildableName = "VommitTests.xctest"
-               BlueprintName = "VommitTests"
-               ReferencedContainer = "container:Vommit.xcodeproj">
+               BuildableName = "OxyPeakTests.xctest"
+               BlueprintName = "OxyPeakTests"
+               ReferencedContainer = "container:OxyPeak.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "B8045BA22FA1AEA400D746F7"
-               BuildableName = "VommitUITests.xctest"
-               BlueprintName = "VommitUITests"
-               ReferencedContainer = "container:Vommit.xcodeproj">
+               BuildableName = "OxyPeakUITests.xctest"
+               BlueprintName = "OxyPeakUITests"
+               ReferencedContainer = "container:OxyPeak.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -70,9 +70,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8045B892FA1AEA300D746F7"
-            BuildableName = "Vommit.app"
-            BlueprintName = "Vommit"
-            ReferencedContainer = "container:Vommit.xcodeproj">
+            BuildableName = "OxyPeak.app"
+            BlueprintName = "OxyPeak"
+            ReferencedContainer = "container:OxyPeak.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -87,9 +87,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "B8045B892FA1AEA300D746F7"
-            BuildableName = "Vommit.app"
-            BlueprintName = "Vommit"
-            ReferencedContainer = "container:Vommit.xcodeproj">
+            BuildableName = "OxyPeak.app"
+            BlueprintName = "OxyPeak"
+            ReferencedContainer = "container:OxyPeak.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
