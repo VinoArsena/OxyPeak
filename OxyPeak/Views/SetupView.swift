@@ -106,7 +106,7 @@ struct SetupView: View {
             }
         }
         .navigationDestination(isPresented: $navigate) {
-            SetupManualView(user: $user)
+            SetupManualView(selectedGender: Gender(from: healthManager.gender), birthday: healthManager.dob, height: healthManager.height, weight: healthManager.weight, vo2Max: healthManager.vo2Max, user: $user)
         }
     }
 }

@@ -123,7 +123,7 @@ class HealthManager {
             }
             
             DispatchQueue.main.async {
-                self.height = sample.quantity.doubleValue(for: .meter())
+                self.height = sample.quantity.doubleValue(for: HKUnit.meterUnit(with: .centi))
             }
         }
         healthStore.execute(query)

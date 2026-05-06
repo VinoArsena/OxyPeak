@@ -1,16 +1,15 @@
 import SwiftUI
 
 struct SetupManualView: View {
-    @State private var name: String = ""
-    @State private var selectedGender: Gender = .others
-    @State private var birthday: Date = Date()
-    @State private var height: Double? = nil
-    @State private var weight: Double? = nil
-    @State private var vo2Max: Double? = nil
-    @State private var navigate = false
+    @State var name: String = ""
+    @State var selectedGender: Gender
+    @State var birthday: Date
+    @State var height: Double
+    @State var weight: Double
+    @State var vo2Max: Double
+    @State private var navigate: Bool = false
     
     @Binding var user: User?
-    
     
     var body: some View {
         
@@ -54,31 +53,44 @@ struct SetupManualView: View {
                         
                     }
                     
+                    HStack {
+                        Text("Height ").font(.headline).foregroundColor(.white)
+                        Text("cm").font(.subheadline).foregroundColor(.secondary)
+                        TextField("", value: $height, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
+                            .padding(.horizontal, 12)
+                            .frame(height: 54)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .background(Color.white.opacity(0.1))
+                            .cornerRadius(20)
+                    }
+                    
                     InputRow(label: "Height") {
-                        TextField("175 cm", value: $height, formatter: NumberFormatter())
+                        TextField("", value: $height, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
                     }
                     
                     InputRow(label: "Weight") {
-                        TextField("60 kg", value: $weight, formatter: NumberFormatter())
+                        TextField("", value: $weight, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
                     }
                     
                     InputRow(label: "VO₂ Max") {
-                        TextField("30 ml/kg/min", value: $vo2Max, formatter: NumberFormatter())
+                        TextField("", value: $vo2Max, formatter: NumberFormatter())
+                            .keyboardType(.numberPad)
                     }
                 }
                 
                 Button {
-                    if let h = height, let w = weight, let v = vo2Max {
-                        user = User(
-                            name: name,
-                            dob: birthday,
-                            gender: selectedGender,
-                            height: h,
-                            weight: w,
-                            vo2Max: v
-                        )
-                        navigate = true
-                    }
+                    user = User(
+                        name: name,
+                        dob: birthday,
+                        gender: selectedGender,
+                        height: height,
+                        weight: weight,
+                        vo2Max: vo2Max
+                    )
+                    navigate = true
                 } label: {
                     Text("Continue")
                         .frame(maxWidth: .infinity)
@@ -87,7 +99,7 @@ struct SetupManualView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .buttonStyle(.glassProminent)
-                .disabled(name.isEmpty || (height ?? 0) == 0 || (weight ?? 0) == 0 || (vo2Max ?? 0) == 0)
+                .disabled(name.isEmpty || height == 0 || weight == 0 || vo2Max == 0)
                 .navigationDestination(isPresented: $navigate) {
                     HomeView(user: $user)
                 }
@@ -128,7 +140,6 @@ struct InputRow<Content: View>: View {
 
 #Preview {
     SetupManualView(
-        user: .constant(nil)
+        name: "", selectedGender: .female, birthday: Date(), height: 0, weight: 0, vo2Max: 0, user: .constant(nil)
     )
 }
-
