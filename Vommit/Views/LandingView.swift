@@ -43,8 +43,8 @@ struct LandingView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .buttonStyle(.glassProminent)
-                    .padding(.horizontal, 36)
-                    .padding(.vertical, 16)
+                    .padding(.horizontal, 85)
+                    .padding(.vertical, 15)
                     .navigationDestination(isPresented: $navigate){
                         SetupView(user: $user)
                     }
@@ -54,7 +54,7 @@ struct LandingView: View {
                     // Footer
                     Text("Based on research from\nAmerican College of Sports Medicine")
                         .multilineTextAlignment(.center)
-                        .font(.system(size: 13, weight: .light))
+                        .font(.system(size: 15, weight: .light))
                         .foregroundColor(.white)
                         .padding(.bottom, 60)
                 }
