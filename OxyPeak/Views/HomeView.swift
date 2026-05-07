@@ -8,11 +8,23 @@ struct HomeView: View {
     @State private var homeViewModel: HomeViewModel = HomeViewModel()
     @State private var isShowingModal = false
     
+    @State private var isAscending: Bool = true
+    
     var age: Int {
         guard let birthday = user?.dob else { return 0 }
         let calendar = Calendar.current
         let ageComponents = calendar.dateComponents([.year], from: birthday, to: Date())
         return ageComponents.year ?? 0
+    }
+    
+    var sortedMountains: [Mountain] {
+        return mountains.sorted { (m1, m2) -> Bool in
+            if isAscending {
+                return m1.grade < m2.grade
+            } else {
+                return m1.grade > m2.grade
+            }
+        }
     }
     
     var body: some View {
@@ -70,11 +82,32 @@ struct HomeView: View {
                 
                 // Mountain Cards
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Pick Mountain")
-                        .font(.title.bold())
+                    HStack {
+                        Text("Pick Mountain")
+                            .font(.title.bold())
+                        
+                        Spacer()
+                        
+                        // --- Sort Toggle Button ---
+                        Button {
+                            withAnimation(.easeInOut) {
+                                isAscending.toggle()
+                            }
+                        } label: {
+                            HStack(spacing: 4) {
+                                Text(isAscending ? "Grade: Low-High" : "Grade: High-Low")
+                                Image(systemName: isAscending ? "arrow.up.circle.fill" : "arrow.down.circle.fill")
+                            }
+                            .font(.caption)
+                            .padding(.vertical, 6)
+                            .padding(.horizontal, 10)
+                            .background(Color.cardBackground)
+                            .clipShape(Capsule())
+                        }
+                    }
                     
                     ScrollView {
-                        ForEach(mountains) { mountain in
+                        ForEach(sortedMountains) { mountain in
                             HStack {
                                 Button {
                                     selectedMountain = mountain
