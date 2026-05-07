@@ -41,7 +41,7 @@ struct AnalysisView: View {
             
             VStack {
                 HStack {
-                    Text(isAboveTarget ? "\(String(format: "%.0f", gap))" : "\(String(format: "%.0f", gap))")
+                    Text(isAboveTarget ? "\(String(format: "%.0f", gap))" : "-\(String(format: "%.0f", gap))")
                         .font(.system(size: 80))
                         .bold()
                         .foregroundStyle(isAboveTarget ? .green : .red)
@@ -129,7 +129,7 @@ struct AnalysisView: View {
         name: "Rinjani",
         imageUrl: "https://d18sx48tl6nre5.cloudfront.net/webp_xl_9a4e03f5b7b3ff53050a863be365b8ff.webp",
         grade: 4,
-        duration: 10,
+        duration: 20,
         elevation: 3726,
         distance: 25,
         estimation: 3..<4,
