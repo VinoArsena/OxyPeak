@@ -26,7 +26,7 @@ struct SetupManualView: View {
                 VStack(spacing: 16) {
                     
                     InputRow(label: "Name", desc: "") {
-                        TextField("Joanne Doe", text: $name)
+                        TextField("", text: $name)
                     }
                     
                     HStack {
