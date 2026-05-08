@@ -1,10 +1,10 @@
-# VOMMIT 🏔️
+# OxyPeak 🏔️
 **Objective Mountain Readiness & Gap Analysis via HealthKit**
 
-Vommit is a native iOS application designed to replace subjective mountain preparation with hard, biometric data. By bridging the gap between a user's current cardiovascular capacity and the objective physical demands of specific mountain terrains, Vommit provides a definitive, data-backed assessment of whether a user is physiologically prepared for a summit.
+OxyPeak is a native iOS application designed to replace subjective mountain preparation with hard, biometric data. By bridging the gap between a user's current cardiovascular capacity and the objective physical demands of specific mountain terrains, OxyPeak provides a definitive, data-backed assessment of whether a user is physiologically prepared for a summit.
 
 ## ⚠️ The Problem We Solve
-Most hiking applications focus on navigation or generic fitness. They fail to address the critical safety gap in scrambling and alpinism: **subjective overconfidence**. Users cannot accurately self-report their readiness for high-altitude, sustained cardiovascular exertion. Vommit removes human bias by utilizing Apple's HealthKit to pull objective VO2 Max data, comparing it directly against established baseline requirements for specific mountains.
+Most hiking applications focus on navigation or generic fitness. They fail to address the critical safety gap in scrambling and alpinism: **subjective overconfidence**. Users cannot accurately self-report their readiness for high-altitude, sustained cardiovascular exertion. OxyPeak removes human bias by utilizing Apple's HealthKit to pull objective VO2 Max data, comparing it directly against established baseline requirements for specific mountains.
 
 ## ✨ Key Features
 * **Biometric Authority (HealthKit Integration):** Seamlessly syncs with Apple Health to pull verified historical VO2 Max data, eliminating the flaw of user self-reporting.
@@ -68,10 +68,10 @@ The data relationship is kept lightweight, focusing on a one-to-many relationshi
 
 ### Installation
 1. Clone the repository.
-2. Open `Vommit.xcodeproj` in Xcode.
+2. Open `OxyPeak.xcodeproj` in Xcode.
 3. Navigate to **Signing & Capabilities**.
 4. Ensure **HealthKit** is added as a capability. 
 5. In your `Info.plist`, you **must** include the following privacy keys with clear justifications for App Store review:
-   * `NSHealthShareUsageDescription`: "Vommit requires access to your VO2 Max data to accurately assess your cardiovascular readiness for specific mountain trails."
-   * `NSHealthUpdateUsageDescription`: "Vommit uses Health data to track your training progress towards your summit goals."
+   * `NSHealthShareUsageDescription`: "OxyPeak requires access to your VO2 Max data to accurately assess your cardiovascular readiness for specific mountain trails."
+   * `NSHealthUpdateUsageDescription`: "OxyPeak uses Health data to track your training progress towards your summit goals."
 6. Build and run `(Cmd + R)`.
